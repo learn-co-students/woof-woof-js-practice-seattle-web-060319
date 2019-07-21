@@ -23,7 +23,9 @@ function renderDogs(json) {
       span.className = "badDog";
     }
     container.appendChild(span);
-    span.addEventListener('click', e => createDogInfo(name, img, dogId, span));
+    span.addEventListener('click', function(e) {
+      createDogInfo(name, img, dogId, span);
+    });
   });
   goodDogFilter();
 }
