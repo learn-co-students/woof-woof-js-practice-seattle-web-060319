@@ -13,10 +13,10 @@
       "image": "https://curriculum-content.s3.amazonaws.com/js/woof-woof/dog_2.jpg"
     },
     {
-      "id": 3,
       "name": "Skittles",
-      "isGoodDog": true,
-      "image": "https://curriculum-content.s3.amazonaws.com/js/woof-woof/dog_3.jpg"
+      "image": "https://curriculum-content.s3.amazonaws.com/js/woof-woof/dog_3.jpg",
+      "id": 3,
+      "isGoodDog": false
     },
     {
       "id": 4,
