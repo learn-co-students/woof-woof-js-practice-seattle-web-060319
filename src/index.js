@@ -24,9 +24,6 @@ function fetchDogInfo(e) {
   div2.appendChild(ul);
   const dogId = e.target.id;
 
-  let h2 = document.createElement("h2");
-  ul.appendChild(h2);
-
   fetch(dogUrl + "/" + dogId)
     .then(res => res.json())
     .then(json => {
