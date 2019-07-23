@@ -35,6 +35,7 @@ function dogAtts(json) {
   let dogName = json.name;
   let dogImg = json.image;
   let isGood = json.isGoodDog;
+  let dogId = json.id;
 
   let div = document.getElementById("dog-info");
   let ul = document.createElement("ul");
@@ -49,15 +50,41 @@ function dogAtts(json) {
   ul.appendChild(h2);
 
   let button = document.createElement("button");
-  button.setAttribute = button.innerText = "Good Dog!";
-  ul.appendChild(button);
-  button.addEventListener("click", goodBad);
-}
+  button.setAttribute("id", isGood);
 
-function goodBad(e) {
-  if (e.target.innerText === "Bad Dog!") {
-    e.target.innerText = "Good Dog!";
+  if (isGood) {
+    button.innerText = "Good Dog!";
   } else {
-    e.target.innerText = "Bad Dog!";
+    button.innerText = "Bad Dog!";
   }
+
+  ul.appendChild(button);
+
+  button.addEventListener("click", function(e) {
+    if (button.innerText === "Good Dog!") {
+      button.innerText = "Bad Dog!";
+    } else {
+      button.innerText = "Good Dog!";
+    }
+
+    isGood = !isGood;
+
+    return fetch(dogUrl + "/" + dogId, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        id: dogId,
+        name: dogName,
+        image: dogImg,
+        isGoodDog: isGood
+      }),
+    })
+    .then(res => res.json());
+  });
+
+
+
 }
